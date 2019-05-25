@@ -1,0 +1,32 @@
+{
+    "scenes": [
+        {
+            "id":"intro",
+            "prompt": "You're tom...",
+            "options": [
+                {
+                    "prompt":"I like games...",
+                    "next_question":"soccer"
+                },
+                {
+                    "prompt":"Why am I here?",
+                    "next_question":"soccer"
+                }
+            ]
+        },
+        {
+            "id":"soccer",
+            "prompt":"You arrive at the game...",
+            "options": [
+                {
+                    "prompt": "I play attack...",
+                    "next_question": "end"
+                },
+                {
+                    "prompt":"I play defense...",
+                    "next_question": "end"
+                }
+            ]
+        }
+    ]
+}
