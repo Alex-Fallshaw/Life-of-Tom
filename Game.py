@@ -11,14 +11,26 @@ class Game:
         self.current_scene = self.scenes[0]
 
     def play(self):
-        self.current_scene.play()
+        while self.current_scene:
+            next_scene_id = self.current_scene.play()
+            self.current_scene = self.get_scene(next_scene_id)
+        
+
+
+    def get_scene(self, next_scene_id):
+        for scene in self.scenes:
+            if scene.id == next_scene_id:
+                return scene
+
 
 class Scene:
     def __init__(self, scene_config):
         self.config = scene_config
+        self.id = scene_config["id"]
 
     def play(self):
-        print(self.config)
+        print("I am playing scene now")
+        return "soccer"
 
 Game('game.json').play()
         

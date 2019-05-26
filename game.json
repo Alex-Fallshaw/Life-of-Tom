@@ -6,11 +6,11 @@
             "options": [
                 {
                     "prompt":"I like games...",
-                    "next_question":"soccer"
+                    "next_scene":"soccer"
                 },
                 {
                     "prompt":"Why am I here?",
-                    "next_question":"soccer"
+                    "next_scene":"soccer"
                 }
             ]
         },
@@ -20,11 +20,11 @@
             "options": [
                 {
                     "prompt": "I play attack...",
-                    "next_question": "end"
+                    "next_scene": "end"
                 },
                 {
                     "prompt":"I play defense...",
-                    "next_question": "end"
+                    "next_scene": "end"
                 }
             ]
         }
