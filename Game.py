@@ -1,4 +1,5 @@
 import json
+import sys
 
 class Game:
     def __init__(self,json_file_path):
@@ -56,16 +57,3 @@ class Scene:
         return next_scene_id
 
 Game('game.json').play()
-        
-import sys
-def ask(question):  # Plays a question in the code.
-    print(question['prompt'])
-    
-    answer = input('Type the number of your answer: ')
-    if answer == 'quit':
-        sys.exit()
-    while answer != '1' and answer != '2' and answer != '3':
-        answer = input('Please type the number of your answer: ')
-    choice = question['options'][int(answer) - 1]
-    reward = choice['reward']
-    print(choice['response']+"\n")
