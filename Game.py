@@ -2,7 +2,7 @@ import json
 import sys
 
 class Game:
-    def __init__(self,json_file_path):
+    def __init__(self, json_file_path):
         json_file = open(json_file_path)
         config = json.load(json_file)
         self.scenes = []
@@ -27,11 +27,11 @@ class Scene:
     def __init__(self, scene_config):
         self.config = scene_config
         self.id = scene_config["id"]
-        self.prompt = scene_config["prompt"]
+        self.prompt = Prompt(scene_config["prompt"])
         self.options = scene_config["options"]
 
     def play(self):
-        print(self.prompt)
+        print(self.prompt.text())
         print(self.options_str())
         answer = self.get_valid_answer()
         option_number = int(answer)
@@ -56,4 +56,46 @@ class Scene:
         next_scene_id = option["next_scene"]
         return next_scene_id
 
-Game('game.json').play()
+class Prompt:
+    def __init__(self, prompt_config):
+        self.config = prompt_config
+
+    def text(self):
+        if type(self.config) is str:
+            return self.config
+        else:
+            full_prompt = ""
+            for part_config in self.config:
+                full_prompt += self.part_text(part_config)
+            return full_prompt
+
+    def part_text(self, part):
+        if part.has_met_requirements():
+            return part.text_if_met
+        else:
+            return part.text_if_not_met
+
+class PromptPart:
+    def __init__(self, part_config):
+        self.config = part_config
+        self.text_if_met = part_config['text_if_met']
+        self.text_if_not_met = part_config["text_if_not_met"]
+        self.requirements = part_config["requirements"]
+
+    def self.has_met_requirements(self):
+        for requirement in requirements:
+            if requirement.met():
+
+class Requirement:
+    def __init__(self, requirement_config):
+        self.name = requirement_config['name']
+        self.value = requirement_config['value']
+
+    def met(self):
+        if self.store(self.name) == self.value:
+            return True
+        else:
+            return False
+    
+game = Game('game.json')
+game.play()

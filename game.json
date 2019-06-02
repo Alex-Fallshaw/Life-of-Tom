@@ -1,29 +1,71 @@
 {
     "scenes": [
         {
-            "id":"intro",
+            "id": "intro",
             "prompt": "You're tom...",
             "options": [
                 {
-                    "prompt":"I like games...",
-                    "next_scene":"soccer"
+                    "prompt": "I like games...",
+                    "next_scene": "soccer",
+                    "consequences": [
+                        {
+                            "name": "flip",
+                            "value": 1
+                        }
+                    ]
+                    
                 },
                 {
-                    "prompt":"Why am I here?",
-                    "next_scene":"soccer"
+                    "prompt": "Why am I here?",
+                    "next_scene": "soccer"
                 }
             ]
         },
         {
-            "id":"soccer",
-            "prompt":"You arrive at the game...",
+            "id": "soccer",
+            "prompt": "You arrive at the game...",
             "options": [
                 {
                     "prompt": "I play attack...",
                     "next_scene": "end"
                 },
                 {
-                    "prompt":"I play defense...",
+                    "prompt": "I play defense...",
+                    "next_scene": "finale"
+                }
+            ]
+        },
+        {
+            "id": "finale",
+            "prompt": [
+                {
+                    "text_if_met": "You feeel proud",
+                    "text_if_not_met": "You have splinters",
+                    "requirements": [
+                        {
+                            "name": "sword",
+                            "value": 1
+                        },
+                        {
+                            "name": "well fed",
+                            "value": 1
+                        }
+                    ]
+                },
+                {
+                    "text_if_met": " and you have a tummy ache.",
+                    "text_if_not_met": ".",
+                    "requirements": [
+                        {
+                            "name": "ate the food",
+                            "value": 1
+                        }
+                    ]
+                }
+            ],
+            "options": [
+                {
+                    "prompt": "It all ended terribly badly",
                     "next_scene": "end"
                 }
             ]
