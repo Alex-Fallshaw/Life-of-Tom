@@ -9,7 +9,7 @@
                     "next_scene": "soccer",
                     "consequences": [
                         {
-                            "name": "flip",
+                            "name": "gamer",
                             "value": 1
                         }
                     ]
@@ -27,11 +27,24 @@
             "options": [
                 {
                     "prompt": "I play attack...",
-                    "next_scene": "end"
+                    "next_scene": "finale",
+                    "consequences": [
+                        {
+                            "name": "attacker",
+                            "value": 1
+                        }
+                    ]
                 },
                 {
                     "prompt": "I play defense...",
-                    "next_scene": "finale"
+                    "next_scene": "finale",
+                    "consequences": [
+                        {
+                            "name": "defender",
+                            "value": 1
+                        }
+                    ]
+
                 }
             ]
         },
@@ -39,25 +52,25 @@
             "id": "finale",
             "prompt": [
                 {
-                    "text_if_met": "You feeel proud",
-                    "text_if_not_met": "You have splinters",
+                    "text_if_met": "You feeel proud of your aggressive gaming",
+                    "text_if_not_met": "You played well",
                     "requirements": [
                         {
-                            "name": "sword",
+                            "name": "gamer",
                             "value": 1
                         },
                         {
-                            "name": "well fed",
+                            "name": "attacker",
                             "value": 1
                         }
                     ]
                 },
                 {
-                    "text_if_met": " and you have a tummy ache.",
+                    "text_if_met": " and you win a 'best on ground' award.",
                     "text_if_not_met": ".",
                     "requirements": [
                         {
-                            "name": "ate the food",
+                            "name": "defender",
                             "value": 1
                         }
                     ]
